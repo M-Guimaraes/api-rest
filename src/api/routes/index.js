@@ -5,16 +5,18 @@ module.exports = ({
   config,
   controller,
   validateSchema,
-  schemas
+  schemas, 
+  joi
 
 }) => {
   const router = express.Router()
   const { authController } = controller
-  const { createSchema } = schemas
 
 
   require('./healthCheck')({ router, config })
-  require('./createUser')({ router, config, authController, validateSchema, createSchema })
-  
+  require('./createUser')({ router, config, authController, validateSchema, schemas, joi })
+  require('./getAllUsers')({ router, config, authController })
+  require('./deleteUser')({ router, config, authController, validateSchema, schemas, joi })
+
   return router
 }

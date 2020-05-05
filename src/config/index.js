@@ -1,5 +1,4 @@
 'use strict'
-
 require('dotenv/config')
 
 const baseUrl = {
@@ -10,11 +9,7 @@ const {
     SERVER_PORT,
     SERVER_NAME,
     SERVER_HOST,
-    DB_USER,
-    DB_PASSWD,
-    DB_HOST,
-    DB_ENGINE,
-    DB_NAME,
+
 } = process.env
 module.exports = {
     server: {
@@ -22,14 +17,7 @@ module.exports = {
         serverHost:  SERVER_HOST,
         serverName:  SERVER_NAME
     },
-    database: {
-        username: DB_USER,
-        userpassword: DB_PASSWD,
-        name: DB_NAME,
-        host: DB_HOST,
-        dialect: DB_ENGINE
-    },
-    endpoints: {
+        endpoints: {
         baseUrl: baseUrl.uri,
     
         healthCheck: {
@@ -37,6 +25,12 @@ module.exports = {
         },
         create: {
             uri: `${baseUrl.uri}/create`
+        },
+        users: {
+            uri: `${baseUrl.uri}/users`
+        },
+        delete: {
+            uri: `${baseUrl.uri}/delete`
         }
       }
     }

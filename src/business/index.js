@@ -1,8 +1,12 @@
 'use strict'
 
-module.exports = ({ config }) => {
+module.exports = ({ User, config, bcrypt, errorUtil, jwt }) => {
   const userBusiness = require('./userBusiness')({
-    config
+    User,
+    config,
+    bcrypt,
+    jwt,
+    errorUtil
   })
   return {
     userBusiness

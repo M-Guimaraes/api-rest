@@ -11,8 +11,16 @@ module.exports = ({ userBusiness }) => {
             } catch (err) {
                 console.log(err);
                 return res.status(400).send({ error: 'User already exists' })
-
             }
+        },
+        getAll: async (req, res) => {
+            const result = await userBusiness.getAll()
+            res.status(200).send(result)
+        },
+        deleteUser: async (req, res) => {
+            const userId = req.params.userId
+            const result = await userBusiness.deleteUser(userId)
+            res.status(200).send(result)
         },
         
     }

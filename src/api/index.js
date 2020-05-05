@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = ({ express, config, bodyParser, controller, joi }) => {
+module.exports = ({ express, config, bodyParser, controller, joi, errorUtil }) => {
     const { validateSchema } = require('./middlewares')({ config })
     const app = express()
     const schemas =require('./schemas')({ joi })
@@ -9,7 +9,9 @@ module.exports = ({ express, config, bodyParser, controller, joi }) => {
         schemas,
         config,
         validateSchema,
-        controller
+        controller, 
+        joi,
+        errorUtil
     })
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())

@@ -2,6 +2,7 @@
 
 module.exports = ({ joi }) => {
     const createSchema = require('./createSchema')({ joi })
+    const deleteSchema = require('./deleteSchema')({ joi })
 
-    return { createSchema }
+    return { createSchema, deleteSchema }
 }

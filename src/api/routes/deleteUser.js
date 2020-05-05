@@ -7,12 +7,12 @@ module.exports = ({
     schemas
 }) => {
     const { endpoints } = config
-    const { createSchema } = schemas
+    const { deleteSchema } = schemas
 
-    router.post(
-    `${endpoints.create.uri}`, 
-    validateSchema(createSchema).validate, 
-    authController.createUser
+    router.delete(
+    `${endpoints.delete.uri}/:userId`, 
+    validateSchema(deleteSchema).validate, 
+    authController.deleteUser
     )
 
     return router

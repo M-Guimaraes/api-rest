@@ -2,7 +2,7 @@
 
 module.exports = ({ joi }) => {
   const createSchema = joi.object({
-    username: joi
+    userName: joi
       .string()
       .alphanum()
       .min(6)

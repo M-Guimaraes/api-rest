@@ -1,31 +1,19 @@
 'use strict'
-
 module.exports = () => {
-    const mongoose = require('../database')    
-    const UserSchema = new mongoose.Schema({
-        username: {
+    const mongoose = require('../database')()  
+    const UserSchema = mongoose.Schema({
+        
+        userName: {
             type: String,
             require: true
         },
-        firstname: {
+        firstName: {
             type: String,
             required: true
         },
-        lastname: {
+        lastName: {
             type: String,
             required: true
-        },
-        fullname: {
-            type: String,
-            set() {
-                this.setDataValue(
-                  'fullName',
-                  this.firstName + ' ' + this.lastName
-                )
-              },
-              get() {
-                return this.firstName + ' ' + this.lastName
-              }
         },
         password: {
             type: String,
@@ -44,10 +32,17 @@ module.exports = () => {
             default: Date.now
         },
     })
-    UserSchema.pre('save', function(next) {
-        const hash = password         
-        next()
+        UserSchema.virtual('fullName').
+        get(function() { return `${this.firstName} ${this.lastName}` }).
+        set(function(fullname) {
+            this.firstName = fullname.substring(0, fullname.indexOf(' '))
+            this.lastName = fullname.substring(fullname.indexOf(' ') + 1)
+            this.set({ firstName, lastName })
     })
+    // UserSchema.pre('save', function(next) {
+    //     const hash = password         
+    //     next()
+    // })
     const User = mongoose.model('User', UserSchema)
     return User
 }
