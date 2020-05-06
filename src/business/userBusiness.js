@@ -22,13 +22,11 @@ module.exports = ({ User, errorUtil }) => {
         },
         deleteUser: async userId => {
             const user = await User.findOne({
-                where: {
-                    id: userId
-                }
+                _id: userId
             })
             if (!user) return errorUtil.notFound('User not found')
             
-            await user.destroy()
+            await user.delete()
             return { message: 'User excluded' }
         },       
     }

@@ -9,7 +9,7 @@ module.exports = () => {
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true, 
-        useFindAndModify: false,   
+        useFindAndModify: true,   
     })
     mongoose.Promise = global.Promise  
     return mongoose
