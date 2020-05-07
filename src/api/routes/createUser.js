@@ -1,19 +1,19 @@
 'use strict'
 module.exports = ({
-    router,
-    config,
-    authController,
-    validateSchema, 
-    schemas
+  router,
+  config,
+  authController,
+  validateSchema,
+  schemas
 }) => {
-    const { endpoints } = config
-    const { createSchema } = schemas
+  const { endpoints } = config
+  const { createSchema } = schemas
 
-    router.post(
-    `${endpoints.create.uri}`, 
-    validateSchema(createSchema).validate, 
+  router.post(
+    `${endpoints.create.uri}`,
+    validateSchema(createSchema).validate,
     authController.createUser
-    )
+  )
 
-    return router
+  return router
 }

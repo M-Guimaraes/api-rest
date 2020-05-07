@@ -22,6 +22,12 @@ module.exports = ({ userBusiness }) => {
             const result = await userBusiness.deleteUser(userId)
             res.status(200).send(result)
         },
+        updateUser: async ( req, res) => {
+            const payload = req.body
+            const userId = req.params.userId
+            const result = await userBusiness.updateUser(userId,payload)
+            res.status(200).send(result)
+        },
         
     }
 }

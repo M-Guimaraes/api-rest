@@ -2,36 +2,33 @@
 require('dotenv/config')
 
 const baseUrl = {
-    uri: '/api'
+  uri: '/api'
 }
 
-const {
-    SERVER_PORT,
-    SERVER_NAME,
-    SERVER_HOST,
-
-} = process.env
+const { SERVER_PORT, SERVER_NAME, SERVER_HOST } = process.env
 module.exports = {
-    server: {
-        serverPort:  SERVER_PORT,
-        serverHost:  SERVER_HOST,
-        serverName:  SERVER_NAME
+  server: {
+    serverPort: SERVER_PORT,
+    serverHost: SERVER_HOST,
+    serverName: SERVER_NAME
+  },
+  endpoints: {
+    baseUrl: baseUrl.uri,
+
+    healthCheck: {
+      uri: `${baseUrl.uri}/health-check`
     },
-        endpoints: {
-        baseUrl: baseUrl.uri,
-    
-        healthCheck: {
-          uri: `${baseUrl.uri}/health-check`
-        },
-        create: {
-            uri: `${baseUrl.uri}/create`
-        },
-        users: {
-            uri: `${baseUrl.uri}/users`
-        },
-        delete: {
-            uri: `${baseUrl.uri}/delete`
-        }
-      }
+    create: {
+      uri: `${baseUrl.uri}/create`
+    },
+    users: {
+      uri: `${baseUrl.uri}/users`
+    },
+    delete: {
+      uri: `${baseUrl.uri}/delete`
+    },
+    update: {
+      uri: `${baseUrl.uri}/update`
     }
-    
+  }
+}
