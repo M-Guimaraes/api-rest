@@ -4,13 +4,15 @@ require('dotenv/config')
 const baseUrl = {
   uri: '/api'
 }
-
 const { SERVER_PORT, SERVER_NAME, SERVER_HOST } = process.env
 module.exports = {
   server: {
     serverPort: SERVER_PORT,
     serverHost: SERVER_HOST,
     serverName: SERVER_NAME
+  },
+  secrets: {
+    secret: 'c4ca4238a0b923820dcc509a6f75849b'
   },
   endpoints: {
     baseUrl: baseUrl.uri,
@@ -29,6 +31,9 @@ module.exports = {
     },
     update: {
       uri: `${baseUrl.uri}/update`
+    },
+    login: {
+      uri: `${baseUrl.uri}/login`
     }
   }
 }

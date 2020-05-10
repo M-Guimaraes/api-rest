@@ -37,6 +37,13 @@ module.exports = ({
     schemas,
     joi
   })
+  require('./loginUser')({
+    config,
+    authController,
+    schemas,
+    router,
+    validateSchema
+  })
 
   return router
 }

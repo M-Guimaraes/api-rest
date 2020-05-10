@@ -18,7 +18,8 @@ const app = require('./api')({
   controller,
   joi,
   schemas,
-  errorUtil
+  errorUtil,
+  jwt
 })
 const { server } = config
 

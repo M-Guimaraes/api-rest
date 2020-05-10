@@ -17,7 +17,7 @@ module.exports = () => {
     password: {
       type: String,
       required: true,
-      select: false
+      select: true
     },
     email: {
       type: String,
@@ -40,10 +40,6 @@ module.exports = () => {
       this.lastName = fullname.substring(fullname.indexOf(' ') + 1)
       this.set({ fullname })
     })
-  // UserSchema.pre('save', function(next) {
-  //     const hash = password
-  //     next()
-  // })
   const User = mongoose.model('User', UserSchema)
   return User
 }

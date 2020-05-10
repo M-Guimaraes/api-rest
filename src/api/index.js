@@ -6,9 +6,14 @@ module.exports = ({
   bodyParser,
   controller,
   joi,
-  errorUtil
+  errorUtil,
+  jwt
 }) => {
-  const { validateSchema } = require('./middlewares')({ config })
+  const { validateSchema, verifyToken } = require('./middlewares')({
+    config,
+    jwt,
+    errorUtil
+  })
   const app = express()
   const schemas = require('./schemas')({ joi })
   const routes = require('./routes')({
@@ -22,6 +27,7 @@ module.exports = ({
   })
   app.use(bodyParser.urlencoded({ extended: true }))
   app.use(bodyParser.json())
+  app.use(verifyToken)
   app.use(routes)
 
   return app

@@ -8,7 +8,5 @@ module.exports = ({ User, config, bcrypt, errorUtil, jwt }) => {
     jwt,
     errorUtil
   })
-  return {
-    userBusiness
-  }
+  return { userBusiness }
 }
